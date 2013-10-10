@@ -47,7 +47,11 @@ for i in range(1,len(matrixFile)):
             if not secondVertex in secondVertexHash:
                 secondVertexHash[secondVertex] = [];
             secondVertexHash[secondVertex].append(edge)            
-      
+
+for key in firstVertexHash:
+    print("###"+key)
+    for edge in firstVertexHash[key]:
+        print(edge.toString())       
 # read in sequences
 sequenceDict = {} #key: sequence name, value: sequence
 with open(sequenceFileName) as f:
