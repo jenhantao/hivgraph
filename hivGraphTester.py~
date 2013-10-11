@@ -138,12 +138,12 @@ for edge in allEdges:
 f = open(outputFileName,'w')
 f.write("\t".join(sequenceIndex))
 for i in range(len(adjacencyMatrix)):
-    f.write(sequenceIndex[i]+"\t"+"\t".join(adjacencyMatrix[i]))
+    f.write(sequenceIndex[i]+"\t"+"\t".join(adjacencyMatrix[i])+"\n")
 f.close()
 # print summary
 print("Number of possible edges: " + str(numberPossible))
 print("Number of edges: " + str(numEdges))
-print("Edges removed: " + str(numEdges - len(allEdges)) + " edges")
+print("Edges removed: " + str(numEdges - len(allEdges)))
 
 
 

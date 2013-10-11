@@ -5,27 +5,23 @@ Model HKY85Model assigned to B
 Model HKY85Model assigned to C
 The tips of the tree:fullTree were matched with the species names from the data as follows {0,1,2}
 
-Pseudo-optimal path's cost 78 vs 78 for 1..k=> a 1 x improvement
+Pseudo-optimal path's cost 90 vs 90 for 1..k=> a 1 x improvement
 Partition  reversible model flag computed as 1
 Variable 'LF' was not initialized prior to being used
 Variable 'fullTree.A.a' was not initialized prior to being used
 Variable 'fullTree.B.a' was not initialized prior to being used
 Variable 'fullTree.C.a' was not initialized prior to being used
-Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 16 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 11 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 23 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 23 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 8 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 16 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Auto-benchmarked an optimal number (4) of threads.
-Set GUI update interval to every 1483-th LF evaluation.
-Initial guess for fullTree.A.a is -6.016302858774696
-Initial guess for fullTree.B.a is 6.018329352008231
-Initial guess for fullTree.C.a is 7.315070647991769
+Site 1 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 1 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 17 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 1 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 26 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 12 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Auto-benchmarked an optimal number (2) of threads.
+Set GUI update interval to every 1291-th LF evaluation.
+Initial guess for fullTree.A.a is -5.879745040453871
+Initial guess for fullTree.B.a is 7.449053576668375
+Initial guess for fullTree.C.a is 5.884346423331624
 Optimization settings:
 	OPTIMIZATION_METHOD = 4
 	OPTIMIZATION_PRECISION = 0.001
@@ -35,15 +31,15 @@ Initial parameter values
 
 R = 1
 fullTree.A.a = 0
-fullTree.B.a = 6.018329352008231
-fullTree.C.a = 7.315070647991769
-Optimization finished in 6 loop passes.
-226 likelihood evaluation calls and 508 matrix exponentiations calls were made
+fullTree.B.a = 7.449053576668375
+fullTree.C.a = 5.884346423331624
+Optimization finished in 7 loop passes.
+252 likelihood evaluation calls and 521 matrix exponentiations calls were made
 
 Auto-benchmarked an optimal number (2) of threads.
-Set GUI update interval to every 21739-th LF evaluation.
-Initial guess for fullTree.B.a is 6.018329352008231
-Initial guess for fullTree.C.a is 7.315070647991769
+Set GUI update interval to every 27777-th LF evaluation.
+Initial guess for fullTree.B.a is 7.449053576668375
+Initial guess for fullTree.C.a is 5.884346423331624
 Optimization settings:
 	OPTIMIZATION_METHOD = 4
 	OPTIMIZATION_PRECISION = 0.001
@@ -51,10 +47,10 @@ Optimization settings:
 
 Initial parameter values
 
-R = 0.2496537030629905
-fullTree.B.a = 6.018329352008231
-fullTree.C.a = 7.315070647991769
-Optimization finished in 7 loop passes.
-398 likelihood evaluation calls and 1038 matrix exponentiations calls were made
+R = 0.1995902769114628
+fullTree.B.a = 7.449053576668375
+fullTree.C.a = 5.884346423331624
+Optimization finished in 6 loop passes.
+326 likelihood evaluation calls and 815 matrix exponentiations calls were made
 
 CChi2(x,n) only makes sense for both arguments positive
