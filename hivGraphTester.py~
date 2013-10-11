@@ -6,6 +6,7 @@
 
 # IMPORTS
 import sys
+import re
 
 # CLASSES
 class Edge:
@@ -21,7 +22,7 @@ sequenceFileName = sys.argv[2]
 edgeThreshold = sys.argv[3]
 discardThreshold = sys.argv[4]
 
-# read in matrix to make edges
+# read in matrix
 with open(matrixFileName) as f:
     matrixFile = f.readlines()
 f.close()
@@ -30,16 +31,20 @@ sequenceIndex = []
 for name in matrixFile[0].split("\t"):
     sequenceIndex.append(name.strip())
 
+# make the edges of the graph
 firstVertexHash = {} # key: the first vertex listed in an edge, value: an array list of edges with given first vertex
 secondVertexHash ={} # key: the second vertex listed in an edge, value: an array list of edges with given second vertex
-
-for i in range(1,len(matrixFile)):
+numberPossible = 0
+for i in range(1,len(matrixFile)): # skip the first line
+    print(i)
     tokens = matrixFile[i].split("\t")
-    for j in range(i+1,len(tokens)-1):
-	score = float(tokens[j].strip())
+    for j in range(i+1,len(tokens)):
+
+        score = float(tokens[j].strip())
+        numberPossible = numberPossible + 1
         if score < edgeThreshold: # if the distance between two sequences is less than the threshold, create an edge
-            firstVertex = sequenceIndex[i]
-            secondVertex = sequenceIndex[j]
+            firstVertex = sequenceIndex[i-1]
+            secondVertex = sequenceIndex[j-1]
             edge = Edge(firstVertex, secondVertex);
             if not firstVertex in firstVertexHash:
                 firstVertexHash[firstVertex] = [];
@@ -47,14 +52,31 @@ for i in range(1,len(matrixFile)):
             if not secondVertex in secondVertexHash:
                 secondVertexHash[secondVertex] = [];
             secondVertexHash[secondVertex].append(edge)            
-
-for key in firstVertexHash:
-    print("###"+key)
-    for edge in firstVertexHash[key]:
-        print(edge.toString())       
+      
 # read in sequences
-sequenceDict = {} #key: sequence name, value: sequence
+sequenceHash = {} #key: sequence name, value: sequence
 with open(sequenceFileName) as f:
     sequenceFile = f.readlines()
+f.close()
+name = ""
+sequence = ""
+for line in sequenceFile:
+    if not re.match(line,"[\n\r]+"):
+        if line.startswith(">"):
+            if len(name) > 0 and len(sequence) > 0:
+                sequenceHash[name] = sequence
+                name = ""
+                sequence = ""
+            name = line.strip()
+        else:
+            sequence = sequence + line.strip()
+
+# determine which sequences to test (find all triplets in graph)
 
 
+
+
+
+# print summary
+print("Number of possible edges: " + str(numberPossible))
+print("There were originally: " + str(len(firstVertexHash.keys())) + " edges")
