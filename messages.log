@@ -3,4 +3,54 @@ Row and/or column partition is empty. All the data will be used by default.
 Model HKY85Model assigned to A
 Model HKY85Model assigned to B
 Model HKY85Model assigned to C
-The leaf of the tree:fullTree labeled A had no match in the data. Please make sure that all leaf names correspond to a sequence name in the data file.
+The tips of the tree:fullTree were matched with the species names from the data as follows {0,1,2}
+
+Pseudo-optimal path's cost 78 vs 78 for 1..k=> a 1 x improvement
+Partition  reversible model flag computed as 1
+Variable 'LF' was not initialized prior to being used
+Variable 'fullTree.A.a' was not initialized prior to being used
+Variable 'fullTree.B.a' was not initialized prior to being used
+Variable 'fullTree.C.a' was not initialized prior to being used
+Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 16 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 11 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 23 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Auto-benchmarked an optimal number (2) of threads.
+Set GUI update interval to every 3225-th LF evaluation.
+Initial guess for fullTree.A.a is -6.016302858774696
+Initial guess for fullTree.B.a is 6.018329352008231
+Initial guess for fullTree.C.a is 7.315070647991769
+Optimization settings:
+	OPTIMIZATION_METHOD = 4
+	OPTIMIZATION_PRECISION = 0.001
+	MAXIMUM_ITERATIONS_PER_VARIABLE = 5000
+
+Initial parameter values
+
+R = 1
+fullTree.A.a = 0
+fullTree.B.a = 6.018329352008231
+fullTree.C.a = 7.315070647991769
+Optimization finished in 6 loop passes.
+234 likelihood evaluation calls and 534 matrix exponentiations calls were made
+
+Auto-benchmarked an optimal number (2) of threads.
+Set GUI update interval to every 22727-th LF evaluation.
+Initial guess for fullTree.B.a is 6.018329352008231
+Initial guess for fullTree.C.a is 7.315070647991769
+Optimization settings:
+	OPTIMIZATION_METHOD = 4
+	OPTIMIZATION_PRECISION = 0.001
+	MAXIMUM_ITERATIONS_PER_VARIABLE = 5000
+
+Initial parameter values
+
+R = 0.2496531055994009
+fullTree.B.a = 6.018329352008231
+fullTree.C.a = 7.315070647991769
+Optimization finished in 6 loop passes.
+362 likelihood evaluation calls and 894 matrix exponentiations calls were made
+
+CChi2(x,n) only makes sense for both arguments positive
