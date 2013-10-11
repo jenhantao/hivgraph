@@ -142,8 +142,8 @@ for i in range(len(adjacencyMatrix)):
 f.close()
 # print summary
 print("Number of possible edges: " + str(numberPossible))
-print("There were originally: " + str(numEdges) + " edges")
-print("Now there are: " + str(len(allEdges)) + " edges")
+print("Number of edges: " + str(numEdges))
+print("Edges removed: " + str(numEdges - len(allEdges)) + " edges")
 
 
 

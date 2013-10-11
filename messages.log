@@ -15,10 +15,14 @@ Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
 Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
 Site 16 evaluated to a 0 probability in ComputeTreeBlockByBranch
 Site 11 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
 Site 23 evaluated to a 0 probability in ComputeTreeBlockByBranch
 Site 2 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Auto-benchmarked an optimal number (2) of threads.
-Set GUI update interval to every 3225-th LF evaluation.
+Site 23 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 8 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 16 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Auto-benchmarked an optimal number (4) of threads.
+Set GUI update interval to every 1483-th LF evaluation.
 Initial guess for fullTree.A.a is -6.016302858774696
 Initial guess for fullTree.B.a is 6.018329352008231
 Initial guess for fullTree.C.a is 7.315070647991769
@@ -34,10 +38,10 @@ fullTree.A.a = 0
 fullTree.B.a = 6.018329352008231
 fullTree.C.a = 7.315070647991769
 Optimization finished in 6 loop passes.
-234 likelihood evaluation calls and 534 matrix exponentiations calls were made
+226 likelihood evaluation calls and 508 matrix exponentiations calls were made
 
 Auto-benchmarked an optimal number (2) of threads.
-Set GUI update interval to every 22727-th LF evaluation.
+Set GUI update interval to every 21739-th LF evaluation.
 Initial guess for fullTree.B.a is 6.018329352008231
 Initial guess for fullTree.C.a is 7.315070647991769
 Optimization settings:
@@ -47,10 +51,10 @@ Optimization settings:
 
 Initial parameter values
 
-R = 0.2496531055994009
+R = 0.2496537030629905
 fullTree.B.a = 6.018329352008231
 fullTree.C.a = 7.315070647991769
-Optimization finished in 6 loop passes.
-362 likelihood evaluation calls and 894 matrix exponentiations calls were made
+Optimization finished in 7 loop passes.
+398 likelihood evaluation calls and 1038 matrix exponentiations calls were made
 
 CChi2(x,n) only makes sense for both arguments positive
