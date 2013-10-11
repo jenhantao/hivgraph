@@ -1,0 +1,6 @@
+
+Row and/or column partition is empty. All the data will be used by default.
+Model HKY85Model assigned to A
+Model HKY85Model assigned to B
+Model HKY85Model assigned to C
+The leaf of the tree:fullTree labeled A had no match in the data. Please make sure that all leaf names correspond to a sequence name in the data file.

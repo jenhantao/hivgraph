@@ -7,6 +7,7 @@
 # IMPORTS
 import sys
 import re
+import os
 
 # CLASSES
 class Edge:
@@ -19,8 +20,8 @@ class Edge:
 # read in arguments
 matrixFileName = sys.argv[1]
 sequenceFileName = sys.argv[2]
-edgeThreshold = sys.argv[3]
-discardThreshold = sys.argv[4]
+edgeThreshold = float(sys.argv[3])
+discardThreshold = float(sys.argv[4])
 
 # read in matrix
 with open(matrixFileName) as f:
@@ -35,21 +36,23 @@ for name in matrixFile[0].split("\t"):
 firstVertexHash = {} # key: the first vertex listed in an edge, value: an array list of edges with given first vertex
 secondVertexHash ={} # key: the second vertex listed in an edge, value: an array list of edges with given second vertex
 numberPossible = 0
+numEdges = 0;
 for i in range(1,len(matrixFile)): # skip the first line
     tokens = matrixFile[i].split("\t")
+    firstVertex = sequenceIndex[i-1]
+    if not firstVertex in firstVertexHash:
+        firstVertexHash[firstVertex] = [];
     for j in range(i+1,len(tokens)):
         score = float(tokens[j].strip())
         numberPossible = numberPossible + 1
-        if score < edgeThreshold: # if the distance between two sequences is less than the threshold, create an edge
-            firstVertex = sequenceIndex[i-1]
+        if score <= edgeThreshold: # if the distance between two sequences is less than the threshold, create an edge
             secondVertex = sequenceIndex[j-1]
             edge = Edge(firstVertex, secondVertex);
-            if not firstVertex in firstVertexHash:
-                firstVertexHash[firstVertex] = [];
             firstVertexHash[firstVertex].append(edge)
-            if not secondVertex in secondVertexHash:
-                secondVertexHash[secondVertex] = [];
-            secondVertexHash[secondVertex].append(edge)            
+            numEdges = numEdges + 1
+            #if not secondVertex in secondVertexHash:
+            #    secondVertexHash[secondVertex] = [];
+            #secondVertexHash[secondVertex].append(edge)            
       
 # read in sequences
 sequenceHash = {} #key: sequence name, value: sequence
@@ -59,22 +62,45 @@ f.close()
 name = ""
 sequence = ""
 for line in sequenceFile:
-    if not re.match(line,"[\n\r]+"):
+    print line
+    if not re.match(line,"^[\n\r]+"):
         if line.startswith(">"):
             if len(name) > 0 and len(sequence) > 0:
-                sequenceHash[name] = sequence
+                sequenceHash[name[1:]] = sequence
                 name = ""
                 sequence = ""
             name = line.strip()
         else:
             sequence = sequence + line.strip()
-
+sequenceHash[name[1:]] = sequence # write the last entry
+print(len(sequenceHash))
 # determine which sequences to test (find all triplets in graph)
-
+triples = set()
+for first in firstVertexHash.keys():
+    for firstEdge in firstVertexHash[first]:
+        for secondEdge in firstVertexHash[firstEdge.second]:
+            for thirdEdge in firstVertexHash[firstEdge.first]:
+                if secondEdge.second == thirdEdge.second:
+                    triples.add(frozenset([firstEdge.first, firstEdge.second, secondEdge.second]))
+# write temp file and then run test
+finalEdges = [];
+for triple in triples:
+    # rotate which sequence is the second
+    tripleList = list(triple)
+    for i in range(3): # there are always three sequences
+        currentFirstVertex = tripleList[0]
+        f = open('temp.fasta','w')
+        for name in triple:
+            f.write(">"+name+"\n"+sequenceHash[name]+"\n")
+        f.close()
+    # call HyPhy to perform test
+    
+    # retrieve test result
 
 
 
 
 # print summary
 print("Number of possible edges: " + str(numberPossible))
-print("There were originally: " + str(len(firstVertexHash.keys())) + " edges")
+print("There were originally: " + str(numEdges) + " edges")
+
