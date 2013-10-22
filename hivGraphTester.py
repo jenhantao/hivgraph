@@ -76,11 +76,13 @@ f.close()
 
 # write before JSON
 frequency = [0]*len(sequenceIndex)
+edgeLine = ""
 for edge in allEdges:
     source = sequenceIndex.index(edge.first)    
     target = sequenceIndex.index(edge.second)
     frequency[source]=frequency[source] + 1
     frequency[target]=frequency[target] + 1
+    edgeLine = edgeLine + '{"source":'+str(source)+',"target":'+str(target)+'},'
 f = open(outputFileName + "_before.json", "w")
 f.write('{"nodes":[')
 toWrite = "";
@@ -88,12 +90,7 @@ for name in sequenceIndex:
      toWrite = toWrite+'{"name":"'+name+'", "count":"'+str(frequency[sequenceIndex.index(name)])+'"},'
 f.write(toWrite[:-1])
 f.write('],"links":[')
-toWrite = ''
-for edge in allEdges:
-    source = sequenceIndex.index(edge.first)    
-    target = sequenceIndex.index(edge.second)
-    toWrite = toWrite + '{"source":'+str(source)+',"target":'+str(target)+'},'
-f.write(toWrite[:-1])
+f.write(edgeLine[:-1])
 f.write(']}')
 f.close()
 
@@ -156,8 +153,6 @@ for triple in triples:
         tripleList.append(currentFirstVertex)
 
 # construct adjacency matrix
-
-
 adjacencyMatrix = []
 for i in range(len(sequenceHash)):
     adjacencyMatrix.append(["0"]*len(sequenceHash))
@@ -182,12 +177,15 @@ for edge in allEdges:
 f.write("}")
 f.close()
 
+#write output JSON
 frequency = [0]*len(sequenceIndex)
+edgeLine = ""
 for edge in allEdges:
     source = sequenceIndex.index(edge.first)    
     target = sequenceIndex.index(edge.second)
     frequency[source]=frequency[source] + 1
     frequency[target]=frequency[target] + 1
+    edgeLine = edgeLine + '{"source":'+str(source)+',"target":'+str(target)+'},'
 f = open(outputFileName + ".json", "w")
 f.write('{"nodes":[')
 toWrite = "";
@@ -195,12 +193,7 @@ for name in sequenceIndex:
      toWrite = toWrite+'{"name":"'+name+'", "count":"'+str(frequency[sequenceIndex.index(name)])+'"},'
 f.write(toWrite[:-1])
 f.write('],"links":[')
-toWrite = ''
-for edge in allEdges:
-    source = sequenceIndex.index(edge.first)    
-    target = sequenceIndex.index(edge.second)
-    toWrite = toWrite + '{"source":'+str(source)+',"target":'+str(target)+'},'
-f.write(toWrite[:-1])
+f.write(edgeLine[:-1])
 f.write(']}')
 f.close()
 
