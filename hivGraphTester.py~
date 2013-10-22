@@ -139,7 +139,7 @@ for triple in triples:
             f.write(">"+vertexName+"\n"+sequenceHash[sequenceName]+"\n")
         f.close()
         # call HyPhy to perform test, if we can reject collapsing A, then remove edge B-C
-        pvalue = float(subprocess.check_output(["HYPHYMP","testTriple.bf"])) #testTriple.bf must be in the current directory
+        pvalue = float(subprocess.check_output(["HYPHYMP","testTriple.bf"])) #testTriple.bf must be in the same directory as the current python working directory
         if pvalue > discardThreshold:
             # try removing the edge in both orientations
             toRemove = Edge(str(tripleList[1]),str(tripleList[2]))
