@@ -14,11 +14,15 @@ Variable 'fullTree.C.a' was not initialized prior to being used
 Site 1 evaluated to a 0 probability in ComputeTreeBlockByBranch
 Site 1 evaluated to a 0 probability in ComputeTreeBlockByBranch
 Site 17 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 12 evaluated to a 0 probability in ComputeTreeBlockByBranch
 Site 1 evaluated to a 0 probability in ComputeTreeBlockByBranch
 Site 26 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Site 12 evaluated to a 0 probability in ComputeTreeBlockByBranch
-Auto-benchmarked an optimal number (2) of threads.
-Set GUI update interval to every 1291-th LF evaluation.
+Site 17 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 1 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 9 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Site 26 evaluated to a 0 probability in ComputeTreeBlockByBranch
+Auto-benchmarked an optimal number (3) of threads.
+Set GUI update interval to every 1908-th LF evaluation.
 Initial guess for fullTree.A.a is -5.879745040453871
 Initial guess for fullTree.B.a is 7.449053576668375
 Initial guess for fullTree.C.a is 5.884346423331624
@@ -34,10 +38,10 @@ fullTree.A.a = 0
 fullTree.B.a = 7.449053576668375
 fullTree.C.a = 5.884346423331624
 Optimization finished in 7 loop passes.
-252 likelihood evaluation calls and 521 matrix exponentiations calls were made
+262 likelihood evaluation calls and 526 matrix exponentiations calls were made
 
 Auto-benchmarked an optimal number (2) of threads.
-Set GUI update interval to every 27777-th LF evaluation.
+Set GUI update interval to every 20833-th LF evaluation.
 Initial guess for fullTree.B.a is 7.449053576668375
 Initial guess for fullTree.C.a is 5.884346423331624
 Optimization settings:
@@ -47,10 +51,10 @@ Optimization settings:
 
 Initial parameter values
 
-R = 0.1995902769114628
+R = 0.1995902768131744
 fullTree.B.a = 7.449053576668375
 fullTree.C.a = 5.884346423331624
 Optimization finished in 6 loop passes.
-326 likelihood evaluation calls and 815 matrix exponentiations calls were made
+325 likelihood evaluation calls and 817 matrix exponentiations calls were made
 
 CChi2(x,n) only makes sense for both arguments positive

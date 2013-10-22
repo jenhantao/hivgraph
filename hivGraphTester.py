@@ -64,7 +64,36 @@ for i in range(1,len(matrixFile)): # skip the first line
             allEdges.append(edge)
             firstVertexHash[firstVertex].append(edge)
             numEdges = numEdges + 1
+# write graphviz file
+#f = open(outputFileName+"_before.graph",'w')
+#f.write("graph{\n")
+#for edge in allEdges:
+#    f.write(edge.toString()+"\n")
+#f.write("}")
+#f.close()
 
+# write before JSON
+frequency = [0]*len(sequenceIndex)
+for edge in allEdges:
+    source = sequenceIndex.index(edge.first)    
+    target = sequenceIndex.index(edge.second)
+    frequency[source]=frequency[source] + 1
+    frequency[target]=frequency[target] + 1
+f = open(outputFileName + "_before.json", "w")
+f.write('{"nodes":[')
+toWrite = "";
+for name in sequenceIndex:
+     toWrite = toWrite+'{"name":"'+name+'", "count":"'+str(frequency[sequenceIndex.index(name)])+'"},'
+f.write(toWrite[:-1])
+f.write('],"links":[')
+toWrite = ''
+for edge in allEdges:
+    source = sequenceIndex.index(edge.first)    
+    target = sequenceIndex.index(edge.second)
+    toWrite = toWrite + '{"source":'+str(source)+',"target":'+str(target)+'},'
+f.write(toWrite[:-1])
+f.write(']}')
+f.close()
 
 # read in sequences
 sequenceHash = {} #key: sequence name, value: sequence
@@ -108,7 +137,7 @@ for triple in triples:
             f.write(">"+vertexName+"\n"+sequenceHash[sequenceName]+"\n")
         f.close()
         # call HyPhy to perform test, if we can reject collapsing A, then remove edge B-C
-        pvalue = subprocess.check_output(["HYPHYMP","testTriple.bf"])
+        pvalue = float(subprocess.check_output(["HYPHYMP","testTriple.bf"]))
         if pvalue > discardThreshold:
             # try removing the edge in both orientations
             toRemove = Edge(str(tripleList[1]),str(tripleList[2]))
@@ -125,6 +154,8 @@ for triple in triples:
         tripleList.append(currentFirstVertex)
 
 # construct adjacency matrix
+
+
 adjacencyMatrix = []
 for i in range(len(sequenceHash)):
     adjacencyMatrix.append(["0"]*len(sequenceHash))
@@ -140,11 +171,36 @@ f.write("\t".join(sequenceIndex)+"\n")
 for i in range(len(adjacencyMatrix)):
     f.write(sequenceIndex[i]+"\t"+"\t".join(adjacencyMatrix[i])+"\n")
 f.close()
+#f = open(outputFileName+"_after.graph",'w')
+#f.write("graph{\n")
+#write graphviz file
+#for edge in allEdges:
+#    f.write(edge.toString()+"\n")
+#f.write("}")
+#f.close()
 # print summary
 print("Number of possible edges: " + str(numberPossible))
 print("Number of edges: " + str(numEdges))
 print("Edges removed: " + str(numEdges - len(allEdges)))
 
-
-
-
+frequency = [0]*len(sequenceIndex)
+for edge in allEdges:
+    source = sequenceIndex.index(edge.first)    
+    target = sequenceIndex.index(edge.second)
+    frequency[source]=frequency[source] + 1
+    frequency[target]=frequency[target] + 1
+f = open(outputFileName + ".json", "w")
+f.write('{"nodes":[')
+toWrite = "";
+for name in sequenceIndex:
+     toWrite = toWrite+'{"name":"'+name+'", "count":"'+str(frequency[sequenceIndex.index(name)])+'"},'
+f.write(toWrite[:-1])
+f.write('],"links":[')
+toWrite = ''
+for edge in allEdges:
+    source = sequenceIndex.index(edge.first)    
+    target = sequenceIndex.index(edge.second)
+    toWrite = toWrite + '{"source":'+str(source)+',"target":'+str(target)+'},'
+f.write(toWrite[:-1])
+f.write(']}')
+f.close()
